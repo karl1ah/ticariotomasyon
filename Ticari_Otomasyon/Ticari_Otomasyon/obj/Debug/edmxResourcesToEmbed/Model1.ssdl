@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Db_tic_model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="T_BANKALAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BANKAADI" Type="varchar" MaxLength="30" />
+    <Property Name="IL" Type="varchar" MaxLength="13" />
+    <Property Name="ILCE" Type="varchar" MaxLength="20" />
+    <Property Name="SUBE" Type="varchar" MaxLength="30" />
+    <Property Name="IBAN" Type="varchar" MaxLength="50" />
+    <Property Name="HESAPNO" Type="varchar" MaxLength="20" />
+    <Property Name="YETKILI" Type="varchar" MaxLength="30" />
+    <Property Name="TELEFON" Type="varchar" MaxLength="15" />
+    <Property Name="TARIH" Type="varchar" MaxLength="10" />
+    <Property Name="HESAPTURU" Type="varchar" MaxLength="20" />
+    <Property Name="FIRMAID" Type="smallint" />
+  </EntityType>
+  <EntityType Name="T_FATURABILGI">
+    <Key>
+      <PropertyRef Name="FATURABILGIID" />
+    </Key>
+    <Property Name="FATURABILGIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SERI" Type="char" MaxLength="1" />
+    <Property Name="SIRANO" Type="varchar" MaxLength="10" />
+    <Property Name="TARIH" Type="varchar" MaxLength="10" />
+    <Property Name="SAAT" Type="varchar" MaxLength="50" />
+    <Property Name="VERGIDAIRE" Type="varchar" MaxLength="40" />
+    <Property Name="ALICI" Type="varchar" MaxLength="30" />
+    <Property Name="TESLIMEDEN" Type="varchar" MaxLength="30" />
+    <Property Name="TESLIMALAN" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="T_FATURADETAY">
+    <Key>
+      <PropertyRef Name="FATURAURUNID" />
+    </Key>
+    <Property Name="FATURAURUNID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUNAD" Type="varchar" MaxLength="20" />
+    <Property Name="MIKTAR" Type="smallint" />
+    <Property Name="FIYAT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FATURAID" Type="int" />
+  </EntityType>
+  <EntityType Name="T_FIRMA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="30" />
+    <Property Name="YETKILISTATU" Type="varchar" MaxLength="30" />
+    <Property Name="YETKILIADSOYAD" Type="varchar" MaxLength="30" />
+    <Property Name="YETKILITC" Type="char" MaxLength="11" />
+    <Property Name="SEKTOR" Type="varchar" MaxLength="15" />
+    <Property Name="TELEFON1" Type="varchar" MaxLength="15" />
+    <Property Name="TELEFON2" Type="varchar" MaxLength="15" />
+    <Property Name="TELEFON3" Type="varchar" MaxLength="15" />
+    <Property Name="MAIL" Type="varchar" MaxLength="40" />
+    <Property Name="FAX" Type="varchar" MaxLength="15" />
+    <Property Name="IL" Type="varchar" MaxLength="13" />
+    <Property Name="ILCE" Type="varchar" MaxLength="20" />
+    <Property Name="VERGIDAIRE" Type="varchar" MaxLength="30" />
+    <Property Name="ADRES" Type="varchar" MaxLength="100" />
+    <Property Name="OZELKOD1" Type="varchar" MaxLength="10" />
+    <Property Name="OZELKOD2" Type="varchar" MaxLength="10" />
+    <Property Name="OZELKOD3" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="T_GIDERLER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AY" Type="varchar" MaxLength="8" />
+    <Property Name="YIL" Type="char" MaxLength="4" />
+    <Property Name="ELEKTIRIK" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SU" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DOGALGAZ" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="INTERNET" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MAASLAR" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EKSTRA" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NOTLAR" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="T_ILCELER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ILCE" Type="varchar" MaxLength="30" />
+    <Property Name="SEHIR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ILLER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SEHIR" Type="varchar" MaxLength="13" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Dbdeneme_gp_1.dbo.T_KODLAR' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="T_KODLAR">
+          <Property Name="FIRMAKOD1" Type="varchar" MaxLength="300" />
+          <Property Name="FIRMAKOD2" Type="varchar" MaxLength="300" />
+          <Property Name="FIRMAKOD3" Type="varchar" MaxLength="300" />
+        </EntityType>-->
+  <EntityType Name="T_MUSTERI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="20" />
+    <Property Name="SOYAD" Type="varchar" MaxLength="30" />
+    <Property Name="TELEFON" Type="varchar" MaxLength="15" />
+    <Property Name="TELEFON2" Type="varchar" MaxLength="15" />
+    <Property Name="TC" Type="char" MaxLength="11" />
+    <Property Name="MAIL" Type="varchar" MaxLength="40" />
+    <Property Name="IL" Type="varchar" MaxLength="13" />
+    <Property Name="ILCE" Type="varchar" MaxLength="20" />
+    <Property Name="ADRES" Type="varchar" MaxLength="100" />
+    <Property Name="VERGIDAIRESI" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Dbdeneme_gp_1.dbo.T_NOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="T_NOT">
+    <Key>
+      <PropertyRef Name="NOTID" />
+    </Key>
+    <Property Name="NOTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOTTARIH" Type="smalldatetime" />
+    <Property Name="NOTSAAT" Type="time" Precision="7" />
+    <Property Name="NOTBASLIK" Type="varchar" MaxLength="50" />
+    <Property Name="NOTDETAY" Type="varchar" MaxLength="250" />
+    <Property Name="NOTOLUSTURAN" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Dbdeneme_gp_1.dbo.T_PERSONEL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="T_PERSONEL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="20" />
+    <Property Name="SOYAD" Type="varchar" MaxLength="30" />
+    <Property Name="TELEFON" Type="varchar" MaxLength="15" />
+    <Property Name="TC" Type="char" MaxLength="11" />
+    <Property Name="MAIL" Type="varchar" MaxLength="40" />
+    <Property Name="IL" Type="varchar" MaxLength="13" />
+    <Property Name="ILCE" Type="varchar" MaxLength="20" />
+    <Property Name="ADRES" Type="varchar" MaxLength="100" />
+    <Property Name="GOREV" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Dbdeneme_gp_1.dbo.T_STOK' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="T_STOK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STOKTUR" Type="varchar" MaxLength="20" />
+    <Property Name="STOKADET" Type="smallint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Dbdeneme_gp_1.dbo.T_URUN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="T_URUN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUNAD" Type="varchar" MaxLength="20" />
+    <Property Name="MARKA" Type="varchar" MaxLength="20" />
+    <Property Name="MODEL" Type="varchar" MaxLength="20" />
+    <Property Name="YIL" Type="char" MaxLength="4" />
+    <Property Name="ADET" Type="smallint" />
+    <Property Name="ALISFIAT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SATISFIAT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DETAY" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <Association Name="FK_T_BANKALAR_T_FIRMA">
+    <End Role="T_FIRMA" Type="Self.T_FIRMA" Multiplicity="0..1" />
+    <End Role="T_BANKALAR" Type="Self.T_BANKALAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_FIRMA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_BANKALAR">
+        <PropertyRef Name="FIRMAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_FATURADETAY_T_FATURABILGI">
+    <End Role="T_FATURABILGI" Type="Self.T_FATURABILGI" Multiplicity="0..1" />
+    <End Role="T_FATURADETAY" Type="Self.T_FATURADETAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_FATURABILGI">
+        <PropertyRef Name="FATURABILGIID" />
+      </Principal>
+      <Dependent Role="T_FATURADETAY">
+        <PropertyRef Name="FATURAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Db_tic_modelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_BANKALAR" EntityType="Self.T_BANKALAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_FATURABILGI" EntityType="Self.T_FATURABILGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_FATURADETAY" EntityType="Self.T_FATURADETAY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_FIRMA" EntityType="Self.T_FIRMA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_GIDERLER" EntityType="Self.T_GIDERLER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_ILCELER" EntityType="Self.T_ILCELER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_ILLER" EntityType="Self.T_ILLER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_MUSTERI" EntityType="Self.T_MUSTERI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_NOT" EntityType="Self.T_NOT" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [T_NOT].[NOTID] AS [NOTID], 
+    [T_NOT].[NOTTARIH] AS [NOTTARIH], 
+    [T_NOT].[NOTSAAT] AS [NOTSAAT], 
+    [T_NOT].[NOTBASLIK] AS [NOTBASLIK], 
+    [T_NOT].[NOTDETAY] AS [NOTDETAY], 
+    [T_NOT].[NOTOLUSTURAN] AS [NOTOLUSTURAN]
+    FROM [dbo].[T_NOT] AS [T_NOT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="T_PERSONEL" EntityType="Self.T_PERSONEL" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [T_PERSONEL].[ID] AS [ID], 
+    [T_PERSONEL].[AD] AS [AD], 
+    [T_PERSONEL].[SOYAD] AS [SOYAD], 
+    [T_PERSONEL].[TELEFON] AS [TELEFON], 
+    [T_PERSONEL].[TC] AS [TC], 
+    [T_PERSONEL].[MAIL] AS [MAIL], 
+    [T_PERSONEL].[IL] AS [IL], 
+    [T_PERSONEL].[ILCE] AS [ILCE], 
+    [T_PERSONEL].[ADRES] AS [ADRES], 
+    [T_PERSONEL].[GOREV] AS [GOREV]
+    FROM [dbo].[T_PERSONEL] AS [T_PERSONEL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="T_STOK" EntityType="Self.T_STOK" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [T_STOK].[ID] AS [ID], 
+    [T_STOK].[STOKTUR] AS [STOKTUR], 
+    [T_STOK].[STOKADET] AS [STOKADET]
+    FROM [dbo].[T_STOK] AS [T_STOK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="T_URUN" EntityType="Self.T_URUN" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [T_URUN].[ID] AS [ID], 
+    [T_URUN].[URUNAD] AS [URUNAD], 
+    [T_URUN].[MARKA] AS [MARKA], 
+    [T_URUN].[MODEL] AS [MODEL], 
+    [T_URUN].[YIL] AS [YIL], 
+    [T_URUN].[ADET] AS [ADET], 
+    [T_URUN].[ALISFIAT] AS [ALISFIAT], 
+    [T_URUN].[SATISFIAT] AS [SATISFIAT], 
+    [T_URUN].[DETAY] AS [DETAY]
+    FROM [dbo].[T_URUN] AS [T_URUN]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_T_BANKALAR_T_FIRMA" Association="Self.FK_T_BANKALAR_T_FIRMA">
+      <End Role="T_FIRMA" EntitySet="T_FIRMA" />
+      <End Role="T_BANKALAR" EntitySet="T_BANKALAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_FATURADETAY_T_FATURABILGI" Association="Self.FK_T_FATURADETAY_T_FATURABILGI">
+      <End Role="T_FATURABILGI" EntitySet="T_FATURABILGI" />
+      <End Role="T_FATURADETAY" EntitySet="T_FATURADETAY" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

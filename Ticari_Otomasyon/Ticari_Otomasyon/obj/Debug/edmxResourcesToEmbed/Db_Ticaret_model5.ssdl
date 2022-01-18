@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Db_Ticaret_model5.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Db_Ticaret_model5StoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Db_Ticaret_model5.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_BANKALAR" EntityType="Db_Ticaret_model5.Store.T_BANKALAR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_FATURABILGI" EntityType="Db_Ticaret_model5.Store.T_FATURABILGI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_FATURADETAY" EntityType="Db_Ticaret_model5.Store.T_FATURADETAY" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_FIRMA" EntityType="Db_Ticaret_model5.Store.T_FIRMA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_GIDERLER" EntityType="Db_Ticaret_model5.Store.T_GIDERLER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_ILCELER" EntityType="Db_Ticaret_model5.Store.T_ILCELER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_ILLER" EntityType="Db_Ticaret_model5.Store.T_ILLER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_KODLAR" EntityType="Db_Ticaret_model5.Store.T_KODLAR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_MUSTERI" EntityType="Db_Ticaret_model5.Store.T_MUSTERI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_NOTada" EntityType="Db_Ticaret_model5.Store.T_NOTada" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_PERSONEL" EntityType="Db_Ticaret_model5.Store.T_PERSONEL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_STOK" EntityType="Db_Ticaret_model5.Store.T_STOK" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_URUN" EntityType="Db_Ticaret_model5.Store.T_URUN" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_FIRMAHAREKETLER" EntityType="Db_Ticaret_model5.Store.T_FIRMAHAREKETLER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_MUSTERIHAREKETLER" EntityType="Db_Ticaret_model5.Store.T_MUSTERIHAREKETLER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_ADMIN" EntityType="Db_Ticaret_model5.Store.T_ADMIN" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_T_BANKALAR_T_FIRMA" Association="Db_Ticaret_model5.Store.FK_T_BANKALAR_T_FIRMA">
+      <End Role="T_FIRMA" EntitySet="T_FIRMA" />
+      <End Role="T_BANKALAR" EntitySet="T_BANKALAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_FATURADETAY_T_FATURABILGI" Association="Db_Ticaret_model5.Store.FK_T_FATURADETAY_T_FATURABILGI">
+      <End Role="T_FATURABILGI" EntitySet="T_FATURABILGI" />
+      <End Role="T_FATURADETAY" EntitySet="T_FATURADETAY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_HAREKETLER_T_FIRMA" Association="Db_Ticaret_model5.Store.FK_T_HAREKETLER_T_FIRMA">
+      <End Role="T_FIRMA" EntitySet="T_FIRMA" />
+      <End Role="T_FIRMAHAREKETLER" EntitySet="T_FIRMAHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_HAREKETLER_T_PERSONEL" Association="Db_Ticaret_model5.Store.FK_T_HAREKETLER_T_PERSONEL">
+      <End Role="T_PERSONEL" EntitySet="T_PERSONEL" />
+      <End Role="T_FIRMAHAREKETLER" EntitySet="T_FIRMAHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_HAREKETLER_T_URUN" Association="Db_Ticaret_model5.Store.FK_T_HAREKETLER_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_FIRMAHAREKETLER" EntitySet="T_FIRMAHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_MUSTERIHAREKETLER_T_MUSTERI" Association="Db_Ticaret_model5.Store.FK_T_MUSTERIHAREKETLER_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_MUSTERIHAREKETLER" EntitySet="T_MUSTERIHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_MUSTERIHAREKETLER_T_PERSONEL" Association="Db_Ticaret_model5.Store.FK_T_MUSTERIHAREKETLER_T_PERSONEL">
+      <End Role="T_PERSONEL" EntitySet="T_PERSONEL" />
+      <End Role="T_MUSTERIHAREKETLER" EntitySet="T_MUSTERIHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_MUSTERIHAREKETLER_T_URUN" Association="Db_Ticaret_model5.Store.FK_T_MUSTERIHAREKETLER_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_MUSTERIHAREKETLER" EntitySet="T_MUSTERIHAREKETLER" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="true" />
+    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="T_BANKALAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BANKAADI" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="IL" Type="varchar" Nullable="true" MaxLength="13" />
+    <Property Name="ILCE" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="SUBE" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="IBAN" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="HESAPNO" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="YETKILI" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="TELEFON" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="TARIH" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="HESAPTURU" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="FIRMAID" Type="smallint" Nullable="true" />
+  </EntityType>
+  <EntityType Name="T_FATURABILGI">
+    <Key>
+      <PropertyRef Name="FATURABILGIID" />
+    </Key>
+    <Property Name="FATURABILGIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SERI" Type="char" Nullable="true" MaxLength="1" />
+    <Property Name="SIRANO" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="TARIH" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="SAAT" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="VERGIDAIRE" Type="varchar" Nullable="true" MaxLength="40" />
+    <Property Name="ALICI" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="TESLIMEDEN" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="TESLIMALAN" Type="varchar" Nullable="true" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="T_FATURADETAY">
+    <Key>
+      <PropertyRef Name="FATURAURUNID" />
+    </Key>
+    <Property Name="FATURAURUNID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUNAD" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="MIKTAR" Type="smallint" Nullable="true" />
+    <Property Name="FIYAT" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="TUTAR" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="FATURAID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="T_FIRMA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="YETKILISTATU" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="YETKILIADSOYAD" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="YETKILITC" Type="char" Nullable="true" MaxLength="11" />
+    <Property Name="SEKTOR" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="TELEFON1" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="TELEFON2" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="TELEFON3" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="MAIL" Type="varchar" Nullable="true" MaxLength="40" />
+    <Property Name="FAX" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="IL" Type="varchar" Nullable="true" MaxLength="13" />
+    <Property Name="ILCE" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="VERGIDAIRE" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="ADRES" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="OZELKOD1" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="OZELKOD2" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="OZELKOD3" Type="nchar" Nullable="true" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="T_GIDERLER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AY" Type="varchar" Nullable="true" MaxLength="8" />
+    <Property Name="YIL" Type="char" Nullable="true" MaxLength="4" />
+    <Property Name="ELEKTIRIK" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="SU" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="DOGALGAZ" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="INTERNET" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="MAASLAR" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="EKSTRA" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="NOTLAR" Type="varchar" Nullable="true" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="T_ILCELER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ILCE" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="SEHIR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ILLER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SEHIR" Type="varchar" Nullable="true" MaxLength="13" />
+  </EntityType>
+  <EntityType Name="T_KODLAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIRMAKOD1" Type="varchar" Nullable="true" MaxLength="300" />
+    <Property Name="FIRMAKOD2" Type="varchar" Nullable="true" MaxLength="300" />
+    <Property Name="FIRMAKOD3" Type="varchar" Nullable="true" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="T_MUSTERI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="SOYAD" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="TELEFON" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="TELEFON2" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="TC" Type="char" Nullable="true" MaxLength="11" />
+    <Property Name="MAIL" Type="varchar" Nullable="true" MaxLength="40" />
+    <Property Name="IL" Type="varchar" Nullable="true" MaxLength="13" />
+    <Property Name="ILCE" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="ADRES" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="VERGIDAIRESI" Type="varchar" Nullable="true" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="T_NOTada">
+    <Key>
+      <PropertyRef Name="NOTID" />
+    </Key>
+    <Property Name="NOTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOTTARIH" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="NOTSAAT" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="NOTBASLIK" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="NOTDETAY" Type="varchar" Nullable="true" MaxLength="250" />
+    <Property Name="NOTOLUSTURAN" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="NOTHITAP" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="T_PERSONEL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="SOYAD" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="TELEFON" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="TC" Type="char" Nullable="true" MaxLength="11" />
+    <Property Name="MAIL" Type="varchar" Nullable="true" MaxLength="40" />
+    <Property Name="IL" Type="varchar" Nullable="true" MaxLength="13" />
+    <Property Name="ILCE" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="ADRES" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="GOREV" Type="varchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="T_STOK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STOKTUR" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="STOKADET" Type="smallint" Nullable="true" />
+  </EntityType>
+  <EntityType Name="T_URUN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUNAD" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="MARKA" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="MODEL" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="YIL" Type="char" Nullable="true" MaxLength="4" />
+    <Property Name="ADET" Type="smallint" Nullable="true" />
+    <Property Name="ALISFIAT" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="SATISFIAT" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="DETAY" Type="varchar" Nullable="true" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="T_FIRMAHAREKETLER">
+    <Key>
+      <PropertyRef Name="HAREKETID" />
+    </Key>
+    <Property Name="HAREKETID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUNID" Type="int" Nullable="true" />
+    <Property Name="ADET" Type="tinyint" Nullable="true" />
+    <Property Name="PERSONEL" Type="tinyint" Nullable="true" />
+    <Property Name="FIRMA" Type="smallint" Nullable="true" />
+    <Property Name="FIYAT" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="TOPLAM" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="FATURAID" Type="int" Nullable="true" />
+    <Property Name="TARIH" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="NOTLAR" Type="varchar" Nullable="true" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="T_MUSTERIHAREKETLER">
+    <Key>
+      <PropertyRef Name="HAREKETID" />
+    </Key>
+    <Property Name="HAREKETID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUNID" Type="int" Nullable="true" />
+    <Property Name="ADET" Type="tinyint" Nullable="true" />
+    <Property Name="PERSONEL" Type="tinyint" Nullable="true" />
+    <Property Name="MUSTERI" Type="smallint" Nullable="true" />
+    <Property Name="FIYAT" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="TOPLAM" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="FATURAID" Type="int" Nullable="true" />
+    <Property Name="TARIH" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="NOTLAR" Type="varchar" Nullable="true" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="T_ADMIN">
+    <Key>
+      <PropertyRef Name="KULLANICIAD" />
+    </Key>
+    <Property Name="KULLANICIAD" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="SIFRE" Type="varchar" Nullable="true" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_T_BANKALAR_T_FIRMA">
+    <End Role="T_FIRMA" Type="Db_Ticaret_model5.Store.T_FIRMA" Multiplicity="0..1" />
+    <End Role="T_BANKALAR" Type="Db_Ticaret_model5.Store.T_BANKALAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_FIRMA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_BANKALAR">
+        <PropertyRef Name="FIRMAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_FATURADETAY_T_FATURABILGI">
+    <End Role="T_FATURABILGI" Type="Db_Ticaret_model5.Store.T_FATURABILGI" Multiplicity="0..1" />
+    <End Role="T_FATURADETAY" Type="Db_Ticaret_model5.Store.T_FATURADETAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_FATURABILGI">
+        <PropertyRef Name="FATURABILGIID" />
+      </Principal>
+      <Dependent Role="T_FATURADETAY">
+        <PropertyRef Name="FATURAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_HAREKETLER_T_FIRMA">
+    <End Role="T_FIRMA" Type="Db_Ticaret_model5.Store.T_FIRMA" Multiplicity="0..1" />
+    <End Role="T_FIRMAHAREKETLER" Type="Db_Ticaret_model5.Store.T_FIRMAHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_FIRMA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_FIRMAHAREKETLER">
+        <PropertyRef Name="FIRMA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_HAREKETLER_T_PERSONEL">
+    <End Role="T_PERSONEL" Type="Db_Ticaret_model5.Store.T_PERSONEL" Multiplicity="0..1" />
+    <End Role="T_FIRMAHAREKETLER" Type="Db_Ticaret_model5.Store.T_FIRMAHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PERSONEL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_FIRMAHAREKETLER">
+        <PropertyRef Name="PERSONEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_HAREKETLER_T_URUN">
+    <End Role="T_URUN" Type="Db_Ticaret_model5.Store.T_URUN" Multiplicity="0..1" />
+    <End Role="T_FIRMAHAREKETLER" Type="Db_Ticaret_model5.Store.T_FIRMAHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_FIRMAHAREKETLER">
+        <PropertyRef Name="URUNID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_MUSTERIHAREKETLER_T_MUSTERI">
+    <End Role="T_MUSTERI" Type="Db_Ticaret_model5.Store.T_MUSTERI" Multiplicity="0..1" />
+    <End Role="T_MUSTERIHAREKETLER" Type="Db_Ticaret_model5.Store.T_MUSTERIHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_MUSTERIHAREKETLER">
+        <PropertyRef Name="MUSTERI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_MUSTERIHAREKETLER_T_PERSONEL">
+    <End Role="T_PERSONEL" Type="Db_Ticaret_model5.Store.T_PERSONEL" Multiplicity="0..1" />
+    <End Role="T_MUSTERIHAREKETLER" Type="Db_Ticaret_model5.Store.T_MUSTERIHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PERSONEL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_MUSTERIHAREKETLER">
+        <PropertyRef Name="PERSONEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_MUSTERIHAREKETLER_T_URUN">
+    <End Role="T_URUN" Type="Db_Ticaret_model5.Store.T_URUN" Multiplicity="0..1" />
+    <End Role="T_MUSTERIHAREKETLER" Type="Db_Ticaret_model5.Store.T_MUSTERIHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_MUSTERIHAREKETLER">
+        <PropertyRef Name="URUNID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

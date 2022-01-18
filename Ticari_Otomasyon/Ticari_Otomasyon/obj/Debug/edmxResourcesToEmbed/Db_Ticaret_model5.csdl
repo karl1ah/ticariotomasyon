@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Db_Ticaret_model5" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="T_BANKALAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BANKAADI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IL" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="ILCE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SUBE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HESAPNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="YETKILI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TARIH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="HESAPTURU" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FIRMAID" Type="Int16" />
+    <NavigationProperty Name="T_FIRMA" Relationship="Self.FK_T_BANKALAR_T_FIRMA" FromRole="T_BANKALAR" ToRole="T_FIRMA" />
+  </EntityType>
+  <EntityType Name="T_FATURABILGI">
+    <Key>
+      <PropertyRef Name="FATURABILGIID" />
+    </Key>
+    <Property Name="FATURABILGIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SERI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SIRANO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TARIH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SAAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VERGIDAIRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="ALICI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TESLIMEDEN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TESLIMALAN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_FATURADETAY" Relationship="Self.FK_T_FATURADETAY_T_FATURABILGI" FromRole="T_FATURABILGI" ToRole="T_FATURADETAY" />
+  </EntityType>
+  <EntityType Name="T_FATURADETAY">
+    <Key>
+      <PropertyRef Name="FATURAURUNID" />
+    </Key>
+    <Property Name="FATURAURUNID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URUNAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MIKTAR" Type="Int16" />
+    <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TUTAR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FATURAID" Type="Int32" />
+    <NavigationProperty Name="T_FATURABILGI" Relationship="Self.FK_T_FATURADETAY_T_FATURABILGI" FromRole="T_FATURADETAY" ToRole="T_FATURABILGI" />
+  </EntityType>
+  <EntityType Name="T_FIRMA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="YETKILISTATU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="YETKILIADSOYAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="YETKILITC" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="SEKTOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="FAX" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="IL" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="ILCE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VERGIDAIRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ADRES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OZELKOD1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="OZELKOD2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="OZELKOD3" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="T_BANKALAR" Relationship="Self.FK_T_BANKALAR_T_FIRMA" FromRole="T_FIRMA" ToRole="T_BANKALAR" />
+    <NavigationProperty Name="T_FIRMAHAREKETLER" Relationship="Db_Ticaret_model5.FK_T_HAREKETLER_T_FIRMA" FromRole="T_FIRMA" ToRole="T_FIRMAHAREKETLER" />
+  </EntityType>
+  <EntityType Name="T_GIDERLER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AY" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="YIL" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="ELEKTIRIK" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SU" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DOGALGAZ" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="INTERNET" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MAASLAR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EKSTRA" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NOTLAR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_ILCELER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ILCE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="SEHIR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="T_ILLER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SEHIR" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_KODLAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIRMAKOD1" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="FIRMAKOD2" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="FIRMAKOD3" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_MUSTERI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SOYAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TC" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="MAIL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="IL" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="ILCE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ADRES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VERGIDAIRESI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_MUSTERIHAREKETLER" Relationship="Db_Ticaret_model5.FK_T_MUSTERIHAREKETLER_T_MUSTERI" FromRole="T_MUSTERI" ToRole="T_MUSTERIHAREKETLER" />
+  </EntityType>
+  <EntityType Name="T_NOTada">
+    <Key>
+      <PropertyRef Name="NOTID" />
+    </Key>
+    <Property Name="NOTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOTTARIH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NOTSAAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NOTBASLIK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NOTDETAY" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="NOTOLUSTURAN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NOTHITAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_PERSONEL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SOYAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TC" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="MAIL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="IL" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="ILCE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ADRES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GOREV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_FIRMAHAREKETLER" Relationship="Db_Ticaret_model5.FK_T_HAREKETLER_T_PERSONEL" FromRole="T_PERSONEL" ToRole="T_FIRMAHAREKETLER" />
+    <NavigationProperty Name="T_MUSTERIHAREKETLER" Relationship="Db_Ticaret_model5.FK_T_MUSTERIHAREKETLER_T_PERSONEL" FromRole="T_PERSONEL" ToRole="T_MUSTERIHAREKETLER" />
+  </EntityType>
+  <EntityType Name="T_STOK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="STOKTUR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="STOKADET" Type="Int16" />
+  </EntityType>
+  <EntityType Name="T_URUN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URUNAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MARKA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MODEL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="YIL" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="ADET" Type="Int16" />
+    <Property Name="ALISFIAT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SATISFIAT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DETAY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_FIRMAHAREKETLER" Relationship="Db_Ticaret_model5.FK_T_HAREKETLER_T_URUN" FromRole="T_URUN" ToRole="T_FIRMAHAREKETLER" />
+    <NavigationProperty Name="T_MUSTERIHAREKETLER" Relationship="Db_Ticaret_model5.FK_T_MUSTERIHAREKETLER_T_URUN" FromRole="T_URUN" ToRole="T_MUSTERIHAREKETLER" />
+  </EntityType>
+  <Association Name="FK_T_BANKALAR_T_FIRMA">
+    <End Role="T_FIRMA" Type="Self.T_FIRMA" Multiplicity="0..1" />
+    <End Role="T_BANKALAR" Type="Self.T_BANKALAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_FIRMA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_BANKALAR">
+        <PropertyRef Name="FIRMAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_FATURADETAY_T_FATURABILGI">
+    <End Role="T_FATURABILGI" Type="Self.T_FATURABILGI" Multiplicity="0..1" />
+    <End Role="T_FATURADETAY" Type="Self.T_FATURADETAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_FATURABILGI">
+        <PropertyRef Name="FATURABILGIID" />
+      </Principal>
+      <Dependent Role="T_FATURADETAY">
+        <PropertyRef Name="FATURAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbOtomasyon" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="T_BANKALAR" EntityType="Self.T_BANKALAR" />
+    <EntitySet Name="T_FATURABILGI" EntityType="Self.T_FATURABILGI" />
+    <EntitySet Name="T_FATURADETAY" EntityType="Self.T_FATURADETAY" />
+    <EntitySet Name="T_FIRMA" EntityType="Self.T_FIRMA" />
+    <EntitySet Name="T_GIDERLER" EntityType="Self.T_GIDERLER" />
+    <EntitySet Name="T_ILCELER" EntityType="Self.T_ILCELER" />
+    <EntitySet Name="T_ILLER" EntityType="Self.T_ILLER" />
+    <EntitySet Name="T_KODLAR" EntityType="Self.T_KODLAR" />
+    <EntitySet Name="T_MUSTERI" EntityType="Self.T_MUSTERI" />
+    <EntitySet Name="T_NOTada" EntityType="Self.T_NOTada" />
+    <EntitySet Name="T_PERSONEL" EntityType="Self.T_PERSONEL" />
+    <EntitySet Name="T_STOK" EntityType="Self.T_STOK" />
+    <EntitySet Name="T_URUN" EntityType="Self.T_URUN" />
+    <AssociationSet Name="FK_T_BANKALAR_T_FIRMA" Association="Self.FK_T_BANKALAR_T_FIRMA">
+      <End Role="T_FIRMA" EntitySet="T_FIRMA" />
+      <End Role="T_BANKALAR" EntitySet="T_BANKALAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_FATURADETAY_T_FATURABILGI" Association="Self.FK_T_FATURADETAY_T_FATURABILGI">
+      <End Role="T_FATURABILGI" EntitySet="T_FATURABILGI" />
+      <End Role="T_FATURADETAY" EntitySet="T_FATURADETAY" />
+    </AssociationSet>
+    <EntitySet Name="T_FIRMAHAREKETLER" EntityType="Db_Ticaret_model5.T_FIRMAHAREKETLER" />
+    <EntitySet Name="T_MUSTERIHAREKETLER" EntityType="Db_Ticaret_model5.T_MUSTERIHAREKETLER" />
+    <AssociationSet Name="FK_T_HAREKETLER_T_FIRMA" Association="Db_Ticaret_model5.FK_T_HAREKETLER_T_FIRMA">
+      <End Role="T_FIRMA" EntitySet="T_FIRMA" />
+      <End Role="T_FIRMAHAREKETLER" EntitySet="T_FIRMAHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_HAREKETLER_T_PERSONEL" Association="Db_Ticaret_model5.FK_T_HAREKETLER_T_PERSONEL">
+      <End Role="T_PERSONEL" EntitySet="T_PERSONEL" />
+      <End Role="T_FIRMAHAREKETLER" EntitySet="T_FIRMAHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_HAREKETLER_T_URUN" Association="Db_Ticaret_model5.FK_T_HAREKETLER_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_FIRMAHAREKETLER" EntitySet="T_FIRMAHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_MUSTERIHAREKETLER_T_MUSTERI" Association="Db_Ticaret_model5.FK_T_MUSTERIHAREKETLER_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_MUSTERIHAREKETLER" EntitySet="T_MUSTERIHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_MUSTERIHAREKETLER_T_PERSONEL" Association="Db_Ticaret_model5.FK_T_MUSTERIHAREKETLER_T_PERSONEL">
+      <End Role="T_PERSONEL" EntitySet="T_PERSONEL" />
+      <End Role="T_MUSTERIHAREKETLER" EntitySet="T_MUSTERIHAREKETLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_MUSTERIHAREKETLER_T_URUN" Association="Db_Ticaret_model5.FK_T_MUSTERIHAREKETLER_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_MUSTERIHAREKETLER" EntitySet="T_MUSTERIHAREKETLER" />
+    </AssociationSet>
+    <EntitySet Name="T_ADMIN" EntityType="Db_Ticaret_model5.T_ADMIN" />
+  </EntityContainer>
+  <EntityType Name="T_FIRMAHAREKETLER">
+    <Key>
+      <PropertyRef Name="HAREKETID" />
+    </Key>
+    <Property Name="HAREKETID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URUNID" Type="Int32" />
+    <Property Name="ADET" Type="Byte" />
+    <Property Name="PERSONEL" Type="Byte" />
+    <Property Name="FIRMA" Type="Int16" />
+    <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TOPLAM" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FATURAID" Type="Int32" />
+    <Property Name="TARIH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NOTLAR" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_FIRMA" Relationship="Db_Ticaret_model5.FK_T_HAREKETLER_T_FIRMA" FromRole="T_FIRMAHAREKETLER" ToRole="T_FIRMA" />
+    <NavigationProperty Name="T_PERSONEL" Relationship="Db_Ticaret_model5.FK_T_HAREKETLER_T_PERSONEL" FromRole="T_FIRMAHAREKETLER" ToRole="T_PERSONEL" />
+    <NavigationProperty Name="T_URUN" Relationship="Db_Ticaret_model5.FK_T_HAREKETLER_T_URUN" FromRole="T_FIRMAHAREKETLER" ToRole="T_URUN" />
+  </EntityType>
+  <EntityType Name="T_MUSTERIHAREKETLER">
+    <Key>
+      <PropertyRef Name="HAREKETID" />
+    </Key>
+    <Property Name="HAREKETID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URUNID" Type="Int32" />
+    <Property Name="ADET" Type="Byte" />
+    <Property Name="PERSONEL" Type="Byte" />
+    <Property Name="MUSTERI" Type="Int16" />
+    <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TOPLAM" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FATURAID" Type="Int32" />
+    <Property Name="TARIH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NOTLAR" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_MUSTERI" Relationship="Db_Ticaret_model5.FK_T_MUSTERIHAREKETLER_T_MUSTERI" FromRole="T_MUSTERIHAREKETLER" ToRole="T_MUSTERI" />
+    <NavigationProperty Name="T_PERSONEL" Relationship="Db_Ticaret_model5.FK_T_MUSTERIHAREKETLER_T_PERSONEL" FromRole="T_MUSTERIHAREKETLER" ToRole="T_PERSONEL" />
+    <NavigationProperty Name="T_URUN" Relationship="Db_Ticaret_model5.FK_T_MUSTERIHAREKETLER_T_URUN" FromRole="T_MUSTERIHAREKETLER" ToRole="T_URUN" />
+  </EntityType>
+  <Association Name="FK_T_HAREKETLER_T_FIRMA">
+    <End Type="Db_Ticaret_model5.T_FIRMA" Role="T_FIRMA" Multiplicity="0..1" />
+    <End Type="Db_Ticaret_model5.T_FIRMAHAREKETLER" Role="T_FIRMAHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_FIRMA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_FIRMAHAREKETLER">
+        <PropertyRef Name="FIRMA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_HAREKETLER_T_PERSONEL">
+    <End Type="Db_Ticaret_model5.T_PERSONEL" Role="T_PERSONEL" Multiplicity="0..1" />
+    <End Type="Db_Ticaret_model5.T_FIRMAHAREKETLER" Role="T_FIRMAHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PERSONEL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_FIRMAHAREKETLER">
+        <PropertyRef Name="PERSONEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_HAREKETLER_T_URUN">
+    <End Type="Db_Ticaret_model5.T_URUN" Role="T_URUN" Multiplicity="0..1" />
+    <End Type="Db_Ticaret_model5.T_FIRMAHAREKETLER" Role="T_FIRMAHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_FIRMAHAREKETLER">
+        <PropertyRef Name="URUNID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_MUSTERIHAREKETLER_T_MUSTERI">
+    <End Type="Db_Ticaret_model5.T_MUSTERI" Role="T_MUSTERI" Multiplicity="0..1" />
+    <End Type="Db_Ticaret_model5.T_MUSTERIHAREKETLER" Role="T_MUSTERIHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_MUSTERIHAREKETLER">
+        <PropertyRef Name="MUSTERI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_MUSTERIHAREKETLER_T_PERSONEL">
+    <End Type="Db_Ticaret_model5.T_PERSONEL" Role="T_PERSONEL" Multiplicity="0..1" />
+    <End Type="Db_Ticaret_model5.T_MUSTERIHAREKETLER" Role="T_MUSTERIHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PERSONEL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_MUSTERIHAREKETLER">
+        <PropertyRef Name="PERSONEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_MUSTERIHAREKETLER_T_URUN">
+    <End Type="Db_Ticaret_model5.T_URUN" Role="T_URUN" Multiplicity="0..1" />
+    <End Type="Db_Ticaret_model5.T_MUSTERIHAREKETLER" Role="T_MUSTERIHAREKETLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_MUSTERIHAREKETLER">
+        <PropertyRef Name="URUNID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="T_ADMIN">
+    <Key>
+      <PropertyRef Name="KULLANICIAD" />
+    </Key>
+    <Property Name="KULLANICIAD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SIFRE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
